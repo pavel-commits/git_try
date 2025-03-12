@@ -1,12 +1,8 @@
-//// ---------------------------1---------------------------
+////// ---------------------------1---------------------------
 //
 //let s = "apple Orange pineapple PEAR"
+//// "apple aPPle appLe Apple"
 //
-//let spl = s.lowercased().split(separator: " ")
-//let sett = Set(spl)
-//print(sett.count)
-//
-//let s1 = "apple aPPle appLe Apple"
 //let spl = s.lowercased().split(separator: " ")
 //let sett = Set(spl)
 //print(sett.count)
@@ -47,12 +43,12 @@
 //
 //// ---------------------------3---------------------------
 //
-//let array1 = ["a", "bb", "b", "cccc"]
-//let array = ["a", "b", "c"]
+//let array11 = ["a", "bb", "b", "cccc"]
+//// ["a", "b", "c"]
 //
 //var d: [Int: Array<String>] = [:]
 //
-//for w in array1 {
+//for w in array11 {
 //    let c = w.count
 //
 //    d[c, default: []].append(w)
@@ -60,18 +56,20 @@
 //
 //let sortedKeys = Array(d.keys).sorted()
 //for key in sortedKeys {
-//    print(key, "-", d[key]!)
+//    print(key, "-", d[key] ?? [])
 //}
 //
 //// ---------------------------4---------------------------
 //
-//let dict1 = ["A": 4, "B": 4, "C": 4] as [String: Int?]
-//let dict2 = ["A": nil, "B": nil, "C": nil] as [String: Int?]
+//let dict1: [String: Double?]
+//dict1 = ["A": 4, "B": 5, "C": nil]
+//// ["A": nil, "B": nil, "C": nil]
+//// ["A": 4, "B": nil, "C": nil]
 //
 //let val = dict1.values
 //
-//var sum = 0
-//var co = 0
+//var sum: Double = 0
+//var co: Double = 0
 //
 //for v in val {
 //    switch v {
@@ -87,7 +85,7 @@
 //} else {
 //    print(sum / co)
 //}
-//
+
 //// ---------------------------5---------------------------
 //
 //enum Fig {
@@ -115,3 +113,4 @@
 //    }
 //}
 //
+
