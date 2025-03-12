@@ -1,5 +1,5 @@
 //// ---------------------------1---------------------------
-
+//
 //let s = "apple Orange pineapple PEAR"
 //
 //let spl = s.lowercased().split(separator: " ")
@@ -10,9 +10,9 @@
 //let spl = s.lowercased().split(separator: " ")
 //let sett = Set(spl)
 //print(sett.count)
-
+//
 //// ---------------------------2---------------------------
-
+//
 //let t = "(())"
 //
 //if t[t.startIndex] == "(" &&
@@ -44,9 +44,9 @@
 //} else {
 //    print("Некорректная")
 //}
-
+//
 //// ---------------------------3---------------------------
-
+//
 //let array1 = ["a", "bb", "b", "cccc"]
 //let array = ["a", "b", "c"]
 //
@@ -62,9 +62,9 @@
 //for key in sortedKeys {
 //    print(key, "-", d[key]!)
 //}
-
+//
 //// ---------------------------4---------------------------
-
+//
 //let dict1 = ["A": 4, "B": 4, "C": 4] as [String: Int?]
 //let dict2 = ["A": nil, "B": nil, "C": nil] as [String: Int?]
 //
@@ -87,9 +87,9 @@
 //} else {
 //    print(sum / co)
 //}
-
+//
 //// ---------------------------5---------------------------
-
+//
 //enum Fig {
 //    case sum(Int, Int)
 //    case sub(Int, Int)
@@ -114,4 +114,4 @@
 //        print("Квадрат - \(a * a)")
 //    }
 //}
-
+//
