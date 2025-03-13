@@ -1,117 +1,116 @@
-//// ---------------------------1---------------------------
+// ---------------------------1---------------------------
 
-//let s = "apple Orange pineapple PEAR"
-//
-//let spl = s.lowercased().split(separator: " ")
-//let sett = Set(spl)
-//print(sett.count)
-//
-//let s1 = "apple aPPle appLe Apple"
-//let spl = s.lowercased().split(separator: " ")
-//let sett = Set(spl)
-//print(sett.count)
+func countUniqueWords(sentence: String) -> Int {
+    let words = sentence.lowercased().split(separator: " ")
+    let uniqueWords = Set(words)
+    return uniqueWords.count
+}
 
-//// ---------------------------2---------------------------
+print(countUniqueWords(sentence: "apple Orange pineapple PEAR"))
+print(countUniqueWords(sentence: "apple aPPle appLe Apple"))
+print()
 
-//let t = "(())"
-//
-//if t[t.startIndex] == "(" &&
-//    t.last == ")" &&
-//    t.filter({ $0 == "(" }).count == t.filter({ $0 == ")" }).count {
-//
-//    var co = 0
-//    var flag = true
-//    let n = t.count
-//
-//    for i in 0..<n {
-//        let el = t[t.index(t.startIndex, offsetBy: i)]
-//        if el == "(" {
-//            co += 1
-//        } else {
-//            if co > 0 {
-//                co -= 1
-//            } else {
-//                flag = false
-//                break
-//            }
-//        }
-//    }
-//    if co == 0 && flag {
-//        print("Корректная")
-//    } else {
-//        print("Некорректная")
-//    }
-//} else {
-//    print("Некорректная")
-//}
+// ---------------------------2---------------------------
 
-//// ---------------------------3---------------------------
+func correctOrNot(string: String) {
+    if string[string.startIndex] == "(" &&
+        string.last == ")" &&
+        string.filter({ $0 == "(" }).count == string.filter({ $0 == ")" }).count {
 
-//let array1 = ["a", "bb", "b", "cccc"]
-//let array = ["a", "b", "c"]
-//
-//var d: [Int: Array<String>] = [:]
-//
-//for w in array1 {
-//    let c = w.count
-//
-//    d[c, default: []].append(w)
-//}
-//
-//let sortedKeys = Array(d.keys).sorted()
-//for key in sortedKeys {
-//    print(key, "-", d[key]!)
-//}
+        var countOpened = 0
+        var flag = true
+        let countString = string.count
 
-//// ---------------------------4---------------------------
+        for i in 0..<countString {
+            let elem = string[string.index(string.startIndex, offsetBy: i)]
+            if elem == "(" {
+                countOpened += 1
+            } else {
+                if countOpened > 0 {
+                    countOpened -= 1
+                } else {
+                    flag = false
+                    break
+                }
+            }
+        }
+        if countOpened == 0 && flag {
+            print("Корректная")
+        } else {
+            print("Некорректная")
+        }
+    } else {
+        print("Некорректная")
+    }
+}
 
-//let dict1 = ["A": 4, "B": 4, "C": 4] as [String: Int?]
-//let dict2 = ["A": nil, "B": nil, "C": nil] as [String: Int?]
-//
-//let val = dict1.values
-//
-//var sum = 0
-//var co = 0
-//
-//for v in val {
-//    switch v {
-//        case .none:
-//            continue
-//        case .some(let a):
-//            sum += a
-//            co += 1
-//    }
-//}
-//if co == 0 {
-//    print("Никто не сдал")
-//} else {
-//    print(sum / co)
-//}
+correctOrNot(string: "(())")
+correctOrNot(string: "))((")
+correctOrNot(string: "()()()")
+print()
 
-//// ---------------------------5---------------------------
+// ---------------------------3---------------------------
 
-//enum Fig {
-//    case sum(Int, Int)
-//    case sub(Int, Int)
-//    case mult(Int, Int)
-//    case div(Int, Int)
-//    case square(Int)
-//}
-//
-//let array1: [Fig] = [.sum(1, 2), .square(2), .sub(2, 4), .mult(2, 5), .div(6, 2), .square(2)]
-//
-//for i in array1 {
-//    switch i {
-//    case .sum(let a, let b):
-//        print("Сумма - \(a + b)")
-//    case .sub(let a, let b):
-//        print("Разность - \(a - b)")
-//    case .mult(let a, let b):
-//        print("Произведение - \(a * b)")
-//    case .div(let a, let b):
-//        print("Частное - \(a / b)")
-//    case .square(let a):
-//        print("Квадрат - \(a * a)")
-//    }
-//}
+func sortByCount(array: Array<String>) {
+    var dict: [Int: Array<String>] = [:]
+
+    for word in array {
+        let count = word.count
+        dict[count, default: []].append(word)
+    }
+    let sortedKeys = Array(dict.keys).sorted()
+    for key in sortedKeys {
+        print(key, "-", dict[key]!)
+    }
+}
+
+sortByCount(array: ["a", "bb", "b", "cccc"])
+print()
+sortByCount(array: ["a", "b", "c"])
+print()
+
+// ---------------------------4---------------------------
+
+func avgValue(dict: [String : Double?]) {
+    let realValues = dict.compactMap { $0.value }
+    let count = Double(realValues.count)
+    if count != 0 {
+        print(realValues.reduce(0, +) / count)
+    } else {
+        print("Никто не сдал")
+    }
+}
+
+avgValue(dict: ["A": 4, "B": nil, "C": nil])
+avgValue(dict: ["A": nil, "B": nil, "C": nil])
+avgValue(dict: ["A": 4, "B": 5, "C": 7])
+print()
+
+// ---------------------------5---------------------------
+
+enum Operations {
+    case sum(Int, Int)
+    case sub(Int, Int)
+    case mult(Int, Int)
+    case div(Int, Int)
+    case square(Int)
+}
+
+let operations: [Operations] = [.sum(1, 2), .square(2), .sub(2, 4), .mult(2, 5), .div(6, 2), .square(2)]
+
+for i in operations {
+    switch i {
+    case .sum(let a, let b):
+        print("Сумма - \(a + b)")
+    case .sub(let a, let b):
+        print("Разность - \(a - b)")
+    case .mult(let a, let b):
+        print("Произведение - \(a * b)")
+    case .div(let a, let b):
+        print("Частное - \(a / b)")
+    case .square(let a):
+        print("Квадрат - \(a * a)")
+    }
+}
+
 
